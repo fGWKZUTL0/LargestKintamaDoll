@@ -25,10 +25,14 @@ const mancoCommand: CreateSlashApplicationCommand = {
   name: "manco",
   description: "まんこ！と返します",
 };
-
+const evaCommand: CreateSlashApplicationCommand = {
+  name: "eva",
+  description: "綾波！と返します",
+};
 await bot.helpers.upsertGuildApplicationCommands(Secret.GUILD_ID, [
   nekoCommand,
   mancoCommand,
+  evaCommand,
 ]);
 
 bot.events.messageCreate = (b, message) => {
@@ -42,6 +46,11 @@ bot.events.messageCreate = (b, message) => {
     b.helpers.sendMessage(message.channelId, {
       content: "まんこ！",
     });
+  }
+  if (message.content === "!僕たち、死ぬかもしれないね"){
+    b.helpers.sendMessage(message.channeld, {
+      content:"eva!",
+    })
   }
 };
 
@@ -61,6 +70,15 @@ bot.events.interactionCreate = (b, interaction) => {
         type: InteractionResponseTypes.ChannelMessageWithSource,
         data: {
           content: "まんこ！！",
+        },
+      });
+      break;
+    }
+    case "僕たち、死ぬかもしれないね": {
+      b.helpers.sendInteractionResponse(interaction.id, interaction.token, {
+        type: InteractionResponseTypes.ChannelMessageWithSource,
+        data: {
+          content: "あなたは死なないわ、太いもの（綾波レイ）",
         },
       });
       break;
