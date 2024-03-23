@@ -77,7 +77,7 @@ bot.events.interactionCreate = (b, interaction) => {
       });
       break;
     }
-    case "eva": {
+    case "test": {
       b.helpers.sendInteractionResponse(interaction.id, interaction.token, {
         type: InteractionResponseTypes.ChannelMessageWithSource,
         data: {
