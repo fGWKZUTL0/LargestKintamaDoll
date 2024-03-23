@@ -26,7 +26,7 @@ const mancoCommand: CreateSlashApplicationCommand = {
   description: "まんこ！と返します",
 };
 const evaCommand: CreateSlashApplicationCommand = {
-  name: "eva",
+  name: "僕たち、死ぬかもしれないね",
   description: "綾波！と返します",
 };
 await bot.helpers.upsertGuildApplicationCommands(Secret.GUILD_ID, [
@@ -47,10 +47,10 @@ bot.events.messageCreate = (b, message) => {
       content: "まんこ！",
     });
   }
-  if (message.content === "!僕たち、死ぬかもしれないね"){
+  if (message.content === "!僕たち、死ぬかもしれないね") {
     b.helpers.sendMessage(message.channeld, {
-      content:"eva!",
-    })
+      content: "僕たち、死ぬかもしれないね!",
+    });
   }
 };
 
