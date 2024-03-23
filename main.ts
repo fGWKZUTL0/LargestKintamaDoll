@@ -26,7 +26,7 @@ const mancoCommand: CreateSlashApplicationCommand = {
   description: "まんこ！と返します",
 };
 const evaCommand: CreateSlashApplicationCommand = {
-  name: "eva",
+  name: "test",
   description: "綾波！と返します",
 };
 await bot.helpers.upsertGuildApplicationCommands(Secret.GUILD_ID, [
@@ -35,6 +35,7 @@ await bot.helpers.upsertGuildApplicationCommands(Secret.GUILD_ID, [
   evaCommand,
 ]);
 
+/* MEMO: bot側のメッセージを作成する関数 */
 bot.events.messageCreate = (b, message) => {
   console.debug(`送信されたコンテンツ： ${message.content}`);
 
