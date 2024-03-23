@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  app:
+    container_name: deno_app
+    build:
+      context: ./.docker/deno/
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/src
+      - deno_cache:/deno_dir
+    environment:
+      DISCORD_TOKEN: ${DISCORD_TOKEN}
+    #   POSTGRES_USER: ${POSTGRES_USER}
+    #   POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    #   POSTGRES_DEV_DATABASE: ${POSTGRES_DEV_DATABASE}
+
+  # db:
+  #   container_name: deno_db
+  #   image: postgres
+  #   ports:
+  #     - 5432:5432
+  #   volumes:
+  #     - deno_db_cache:/var/lib/postgresql/data
+  #   environment:
+  #     POSTGRES_ALLOW_EMPTY_PASSWORD: "yes"
+  #     POSTGRES_USER: ${POSTGRES_USER}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  #     POSTGRES_DEV_DATABASE: ${POSTGRES_DEV_DATABASE}
+
+volumes:
+  deno_cache:
+  # deno_db_cache:
