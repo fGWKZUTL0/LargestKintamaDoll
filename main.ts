@@ -50,9 +50,9 @@ bot.events.messageCreate = (b, message) => {
       content: "まんこ！",
     });
   }
-  if (message.content === "!eva") {
+  if (message.content === "/僕たち、死ぬかもしれないね") {
     b.helpers.sendMessage(message.channeld, {
-      content: "eva!",
+      content: "僕たち、死ぬかもしれないね",
     });
   }
 };
