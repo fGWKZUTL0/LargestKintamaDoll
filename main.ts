@@ -26,7 +26,7 @@ const mancoCommand: CreateSlashApplicationCommand = {
   description: "まんこ！と返します",
 };
 const evaCommand: CreateSlashApplicationCommand = {
-  name: "test",
+  name: "僕たち、死ぬかもしれないね",
   description: "綾波！と返します",
 };
 await bot.helpers.upsertGuildApplicationCommands(Secret.GUILD_ID, [
@@ -77,7 +77,7 @@ bot.events.interactionCreate = (b, interaction) => {
       });
       break;
     }
-    case "test": {
+    case "僕たち、死ぬかもしれないね": {
       b.helpers.sendInteractionResponse(interaction.id, interaction.token, {
         type: InteractionResponseTypes.ChannelMessageWithSource,
         data: {
