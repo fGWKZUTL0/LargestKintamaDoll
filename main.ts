@@ -26,7 +26,7 @@ const mancoCommand: CreateSlashApplicationCommand = {
   description: "まんこ！と返します",
 };
 const evaCommand: CreateSlashApplicationCommand = {
-  name: "僕たち、死ぬかもしれないね",
+  name: "eva",
   description: "綾波！と返します",
 };
 await bot.helpers.upsertGuildApplicationCommands(Secret.GUILD_ID, [
@@ -36,6 +36,8 @@ await bot.helpers.upsertGuildApplicationCommands(Secret.GUILD_ID, [
 ]);
 
 bot.events.messageCreate = (b, message) => {
+  console.debug(`送信されたコンテンツ： ${message.content}`);
+
   if (message.content === "!neko") {
     b.helpers.sendMessage(message.channelId, {
       content: "にゃーん",
@@ -47,9 +49,9 @@ bot.events.messageCreate = (b, message) => {
       content: "まんこ！",
     });
   }
-  if (message.content === "!僕たち、死ぬかもしれないね") {
+  if (message.content === "!eva") {
     b.helpers.sendMessage(message.channeld, {
-      content: "僕たち、死ぬかもしれないね!",
+      content: "eva!",
     });
   }
 };
@@ -74,7 +76,7 @@ bot.events.interactionCreate = (b, interaction) => {
       });
       break;
     }
-    case "僕たち、死ぬかもしれないね": {
+    case "eva": {
       b.helpers.sendInteractionResponse(interaction.id, interaction.token, {
         type: InteractionResponseTypes.ChannelMessageWithSource,
         data: {
@@ -84,6 +86,7 @@ bot.events.interactionCreate = (b, interaction) => {
       break;
     }
     default: {
+      console.debug(`不明なコマンド： ${interaction.data?.name}`);
       break;
     }
   }
